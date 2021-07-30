@@ -1,5 +1,6 @@
 #!/bin/sh
 set -e
+set -x
 
 if [ ! -f ~/.vimrc ]; then
 	cp $PWD/.vimrc ~/.vimrc
@@ -9,14 +10,14 @@ if [ ! -f ~/.bash_aliases ]; then
 	cp $PWD/.bash_aliases ~/.bash_aliases
 fi
 
-if [ grep -q HISTSIZE ~/.bashrc ]; then
-	sed -i 's/HISTSIZE=.*/HISTSIZE=10000/'
+if grep -q HISTSIZE ~/.bashrc; then
+	sed -i 's/HISTSIZE=.*/HISTSIZE=10000/' ~/.bashrc
 else
 	echo 'HISTSIZE=10000' >> ~/.bashrc
 fi
 
-if [ grep -q HISTFILESIZE ~/.bashrc ]; then
-	sed -i 's/HISTFILESIZE=.*/HISTFILESIZE=20000/'
+if grep -q HISTFILESIZE ~/.bashrc; then
+	sed -i 's/HISTFILESIZE=.*/HISTFILESIZE=20000/' ~/.bashrc
 else
 	echo 'HISTFILESIZE=10000' >> ~/.bashrc
 fi
